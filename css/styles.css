@@ -673,20 +673,18 @@ footer {
 }
 
 
-/* @media (max-width: 768px) {
+ @media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .nav-bar .container {
+  .nav-bar {
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 1rem;
-    padding: 0 1rem;
+    justify-content: center;
   }
 
   .nav-bar a {
-    font-size: 0.75rem;
+    display: inline-block;
   }
 
   .dropdown-content {
@@ -702,6 +700,92 @@ footer {
   .dropdown:focus-within .dropdown-content {
     display: block;
   }
+
+  .footer-links, .social-media {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-links a, .social-media a {
+    margin: 5px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  .right-icons a:nth-child(1) {
+    display: none;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .top-sales-item .product-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .top-sales-item .product-image .product-price {
+    display: flex;
+    font-size: 8px;
+  }
+
+  .sales-section-left-sales {
+    width: 25%;
+    text-align: center;
+  }
+
+  .sales-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shop-now {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .super-deals img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .super-deals h3 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+    font-size: 0.75rem;
+  }
+
+  .price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .price span {
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  .add-to-cart {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -716,7 +800,12 @@ footer {
   .nav-bar a {
     font-size: 0.7rem;
   }
-} */
+
+  .right-icons a {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+}
 
 
 
