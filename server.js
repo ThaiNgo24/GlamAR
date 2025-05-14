@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const cors = require("cors"); // Thêm middleware CORS
+const cors = require("cors");
 
 // Khởi tạo ứng dụng
 const app = express();
@@ -265,6 +265,197 @@ app.get("/api/auth/me", authenticateToken, async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to get user data",
+    });
+  }
+});
+
+// API lấy thông tin user
+app.get("/api/users/:userId", authenticateToken, async (req, res) => {
+  try {
+    // Chỉ cho phép xem thông tin của chính mình
+    if (req.params.userId !== req.user.userId) {
+      return res.status(403).json({
+        success: false,
+        message: "Unauthorized to view this profile",
+      });
+    }
+
+    const user = await User.findById(req.params.userId).select(
+      "-password -__v"
+    );
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    console.error("Get user error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to get user data",
+    });
+  }
+});
+
+// API upload avatar (lưu vào MongoDB)
+app.post("/api/users/upload-avatar", authenticateToken, async (req, res) => {
+  try {
+    if (!req.files || !req.files.avatar) {
+      return res
+        .status(400)
+        .json({ success: false, message: "No avatar uploaded" });
+    }
+
+    const avatar = req.files.avatar;
+    const userId = req.body.userId;
+
+    // Lưu file vào thư mục uploads (hoặc lên cloud storage)
+    const uploadDir = path.join(__dirname, "public", "uploads");
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    const fileName = `avatar-${userId}-${Date.now()}${path.extname(
+      avatar.name
+    )}`;
+    const filePath = path.join(uploadDir, fileName);
+
+    await avatar.mv(filePath);
+
+    // Lưu đường dẫn vào MongoDB
+    const avatarUrl = `/uploads/${fileName}`;
+    await User.findByIdAndUpdate(userId, { avatar: avatarUrl });
+
+    res.json({
+      success: true,
+      avatarUrl,
+      message: "Avatar uploaded successfully",
+    });
+  } catch (error) {
+    console.error("Avatar upload error:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to upload avatar" });
+  }
+});
+
+// API cập nhật thông tin user
+app.put("/api/users/:userId", authenticateToken, async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    // Kiểm tra user chỉ được cập nhật thông tin của chính mình
+    if (userId !== req.user.userId) {
+      return res.status(403).json({
+        success: false,
+        message: "Unauthorized to update this profile",
+      });
+    }
+
+    const { fullName, bio, phone, company } = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { fullName, bio, phone, company },
+      { new: true }
+    ).select("-password -__v");
+
+    res.json({
+      success: true,
+      user: updatedUser,
+      message: "Profile updated successfully",
+    });
+  } catch (error) {
+    console.error("Update profile error:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to update profile" });
+  }
+});
+
+// API gửi liên hệ
+app.post("/api/contact", authenticateToken, async (req, res) => {
+  try {
+    const { userId, email, subject, message } = req.body;
+
+    // Lưu thông tin liên hệ vào MongoDB
+    const contact = new Contact({
+      userId,
+      email,
+      subject,
+      message,
+    });
+
+    await contact.save();
+
+    // Gửi email thực tế có thể thêm ở đây (sử dụng Nodemailer hoặc service khác)
+
+    res.json({
+      success: true,
+      message: "Your message has been sent successfully",
+    });
+  } catch (error) {
+    console.error("Contact error:", error);
+    res.status(500).json({ success: false, message: "Failed to send message" });
+  }
+});
+
+const nodemailer = require("nodemailer");
+
+// Không cần cấu hình email gửi đi ở đây nữa
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER || "no-reply@tfwar.com", // Email chung của hệ thống
+    pass: process.env.EMAIL_PASS || "your-app-password",
+  },
+});
+
+app.post("/api/send-email", authenticateToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    const { subject, message } = req.body;
+
+    const mailOptions = {
+      // Lấy email người gửi từ MongoDB
+      from: `"${user.username}" <${user.email}>`,
+      to: "thaibap2406@gmail.com", // Email nhận cố định
+      subject: `[TFWar Contact] ${subject}`,
+      text: `From: ${user.email}\n\n${message}`,
+      html: `
+        <h2>New Contact Message from TFWar</h2>
+        <p><strong>User:</strong> ${user.username} (${user.email})</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <hr>
+        <p>${message.replace(/\n/g, "<br>")}</p>
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.json({
+      success: true,
+      message: "Email sent successfully",
+    });
+  } catch (error) {
+    console.error("Email send error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to send email",
+      error: error.message,
     });
   }
 });
