@@ -1,0 +1,11 @@
+export const APIResponse = {
+  success: (data, message = 'Success') => ({
+    success: true,
+    message,
+    data
+  }),
+  error: (message = 'An error occurred') => ({
+    success: false,
+    message
+  })
+};

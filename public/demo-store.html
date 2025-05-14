@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Store | AR Driven Virtual Try On For Business</title>
+    <meta
+      name="description"
+      content="Improve Retail Sales with an AI-driven virtual try on of Jewellery, Makeup & Accessories. Checkout out GlamAR's Demo store & Book a free demo today."
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/demo-store.css" />
+    <link rel="icon" href="images/logo-glamar.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <!-- Loader -->
+    <!-- <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div> -->
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="../main.html" class="logo">
+            <img src="../images/canoc.png" alt="canoc Logo" />
+            <img
+              src="../images/TFW.png"
+              alt="TFW Logo"
+              style="height: 25px; margin-top: 0.5rem"
+            />
+            <!-- <h2>TFWar</h2> -->
+          </a>
+          <nav class="nav-main">
+            <ul class="nav-list">
+              <li class="nav-item has-dropdown">
+                <a href="#" class="nav-link"
+                  >3D Solutions <span class="dropdown-icon"></span
+                ></a>
+                <div class="dropdown-menu">
+                  <div class="dropdown-grid">
+                    <a href="#" class="dropdown-item">
+                      <div class="dropdown-icon-wrapper">
+                        <img
+                          src="https://ext.same-assets.com/60190412/2563901416.svg"
+                          alt="3D model creation"
+                        />
+                      </div>
+                      <div class="dropdown-content">
+                        <h4>3D model creation</h4>
+                        <p>
+                          Create scalable, high-quality 3D modelling for your
+                          products
+                        </p>
+                      </div>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                      <div class="dropdown-icon-wrapper">
+                        <img
+                          src="https://ext.same-assets.com/60190412/548389142.svg"
+                          alt="360 product viewer"
+                        />
+                      </div>
+                      <div class="dropdown-content">
+                        <h4>360 product viewer</h4>
+                        <p>
+                          Minimize returns by 50% with our robust 360-viewer
+                          technology
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item has-dropdown">
+                <a href="#" class="nav-link"
+                  >AR Solutions <span class="dropdown-icon"></span
+                ></a>
+                <div class="dropdown-menu">
+                  <!-- Dropdown content will be added with JavaScript -->
+                </div>
+              </li>
+              <li class="nav-item has-dropdown">
+                <a href="#" class="nav-link"
+                  >VR Solutions <span class="dropdown-icon"></span
+                ></a>
+                <div class="dropdown-menu">
+                  <!-- Dropdown content will be added with JavaScript -->
+                </div>
+              </li>
+              <li class="nav-item has-dropdown">
+                <a href="#" class="nav-link"
+                  >Resources <span class="dropdown-icon"></span
+                ></a>
+                <div class="dropdown-menu">
+                  <!-- Dropdown content will be added with JavaScript -->
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="header-actions">
+            <a href="../demo-store.html" class="btn btn-outline">Demo Store</a>
+            <a href="../login.html" class="btn btn-primary">Log In</a>
+          </div>
+          <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="demo-store-content">
+      <!-- Hero Banner -->
+      <section class="demo-hero">
+        <div class="demo-hero-image">
+          <img
+            src="https://ext.same-assets.com/793653753/3857923357.webp"
+            alt="AI skin analysis"
+          />
+        </div>
+        <div class="demo-hero-content">
+          <div class="demo-hero-tag">AI skin analysis</div>
+          <h1 class="demo-hero-title">
+            Get personalised skin care advice here
+          </h1>
+          <p class="demo-hero-description">
+            Evaluates your skin and provides you with personalised
+            recommendations
+          </p>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="categories-section">
+        <h2 class="section-title">Explore our categories</h2>
+
+        <div class="categories-row">
+          <a href="#" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/GlamAR/Assests/makeupimage.webp"
+                alt="Makeup"
+              />
+            </div>
+            <div class="category-name">Makeup</div>
+          </a>
+          <a href="#" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/GlamAR/Assests/jeweleryimage.webp"
+                alt="Jewelry"
+              />
+            </div>
+            <div class="category-name">Jewelry</div>
+          </a>
+          <a href="#" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/GlamAR/Assests/watchesimage.webp"
+                alt="Watches"
+              />
+            </div>
+            <div class="category-name">Watches</div>
+          </a>
+          <a
+            href="https://www.glamar.io/demo-store/eyewear"
+            class="category-item"
+          >
+            <div class="category-image">
+              <img
+                src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/GlamAR/Assests/eyewearimage.webp"
+                alt="Eyewear"
+              />
+            </div>
+            <div class="category-name">Eyewear</div>
+          </a>
+        </div>
+
+        <div class="categories-row">
+          <a href="#" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/GlamAR/Assests/accessoriesimage.webp"
+                alt="Accessories"
+              />
+            </div>
+            <div class="category-name">Accessories</div>
+          </a>
+          <a href="#" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/GlamAR/Assests/footwearimage.webp"
+                alt="Footwear"
+              />
+            </div>
+            <div class="category-name">Footwear</div>
+          </a>
+          <a href="#" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/GlamAR/Assests/furnitureimage.webp"
+                alt="Furniture & Home Decor"
+              />
+            </div>
+            <div class="category-name">Furniture & Home Decor</div>
+          </a>
+          <a href="#" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/original/webflow-team/GlamAR/Assests/looksimage.webp"
+                alt="Looks Store"
+              />
+            </div>
+            <div class="category-name">Looks Store</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Brand Stores Section -->
+      <!-- <section class="brand-stores-section">
+            <h2 class="section-title">Brand Stores</h2>
+
+            <div class="brand-stores-grid">
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+                <a href="#" class="brand-store-item">
+                    <img src="https://ext.same-assets.com/793653753/2878263316.svg" alt="GlamAR Brand">
+                </a>
+            </div>
+        </section> -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="/" class="footer-logo">
+              <img
+                src="https://ext.same-assets.com/60190412/2878263316.svg"
+                alt="GlamAR Logo"
+              />
+            </a>
+            <p class="copyright">© 2025 GlamAR. All rights reserved.</p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="LinkedIn">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                  ></path>
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="Facebook">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4 class="footer-column-title">Solutions</h4>
+              <ul class="footer-links-list">
+                <li><a href="#" class="footer-link">3D Model Creation</a></li>
+                <li><a href="#" class="footer-link">360 Product Viewer</a></li>
+                <li><a href="#" class="footer-link">Virtual Try-ons</a></li>
+                <li><a href="#" class="footer-link">AR Ads</a></li>
+                <li><a href="#" class="footer-link">Virtual Store</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4 class="footer-column-title">Company</h4>
+              <ul class="footer-links-list">
+                <li><a href="#" class="footer-link">About Us</a></li>
+                <li><a href="#" class="footer-link">Careers</a></li>
+                <li><a href="#" class="footer-link">Contact Us</a></li>
+                <li><a href="#" class="footer-link">Partners</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4 class="footer-column-title">Resources</h4>
+              <ul class="footer-links-list">
+                <li><a href="#" class="footer-link">Blog</a></li>
+                <li><a href="#" class="footer-link">Use Cases</a></li>
+                <li><a href="#" class="footer-link">Documentation</a></li>
+                <li><a href="#" class="footer-link">Help Center</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link"
+            >3D Solutions <span class="mobile-dropdown-toggle"></span
+          ></a>
+          <div class="mobile-dropdown-content">
+            <a href="#" class="mobile-submenu-link">3D Model Creation</a>
+            <a href="#" class="mobile-submenu-link">360 Product Viewer</a>
+            <a href="#" class="mobile-submenu-link">3D Product Configurator</a>
+            <a href="#" class="mobile-submenu-link">3D Virtual Photography</a>
+          </div>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link"
+            >AR Solutions <span class="mobile-dropdown-toggle"></span
+          ></a>
+          <div class="mobile-dropdown-content">
+            <a href="#" class="mobile-submenu-link">Virtual Try-ons</a>
+            <a href="#" class="mobile-submenu-link">AR Ads</a>
+            <a href="#" class="mobile-submenu-link">AI Facial Skin Analysis</a>
+          </div>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link"
+            >VR Solutions <span class="mobile-dropdown-toggle"></span
+          ></a>
+          <div class="mobile-dropdown-content">
+            <a href="#" class="mobile-submenu-link">Virtual Store</a>
+            <a href="#" class="mobile-submenu-link">Virtual Space</a>
+            <a href="#" class="mobile-submenu-link">Virtual Events</a>
+          </div>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link"
+            >Resources <span class="mobile-dropdown-toggle"></span
+          ></a>
+          <div class="mobile-dropdown-content">
+            <a href="#" class="mobile-submenu-link">Articles</a>
+            <a href="#" class="mobile-submenu-link">Use Cases</a>
+            <a href="#" class="mobile-submenu-link">Guides</a>
+            <a href="#" class="mobile-submenu-link">Documentation</a>
+            <a href="#" class="mobile-submenu-link">Partners</a>
+          </div>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="/demo-store" class="mobile-nav-link">Demo Store</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="/contact-us" class="mobile-nav-link">Talk to Us</a>
+        </li>
+      </ul>
+
+      <div class="mobile-language-selector">
+        <p class="mobile-language-title">Choose a language</p>
+        <div class="mobile-language-list">
+          <a href="#" class="mobile-language-item">
+            <img
+              src="https://ext.same-assets.com/793653753/2401960351.svg"
+              alt="English"
+            />
+            <span>English</span>
+          </a>
+          <a href="#" class="mobile-language-item">
+            <img
+              src="https://ext.same-assets.com/793653753/2922599800.svg"
+              alt="French"
+            />
+            <span>Français</span>
+          </a>
+          <a href="#" class="mobile-language-item">
+            <img
+              src="https://ext.same-assets.com/793653753/1055540443.svg"
+              alt="Spanish"
+            />
+            <span>Español</span>
+          </a>
+          <a href="#" class="mobile-language-item">
+            <img
+              src="https://ext.same-assets.com/793653753/1126901143.svg"
+              alt="Portuguese"
+            />
+            <span>Português</span>
+          </a>
+          <a href="#" class="mobile-language-item">
+            <img
+              src="https://ext.same-assets.com/793653753/1713683234.svg"
+              alt="German"
+            />
+            <span>Deutsch</span>
+          </a>
+          <a href="#" class="mobile-language-item">
+            <img
+              src="https://ext.same-assets.com/793653753/780745631.svg"
+              alt="Italian"
+            />
+            <span>Italiano</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
+
+    <script src="../js/web/demo-store.js"></script>
+  </body>
+</html>
