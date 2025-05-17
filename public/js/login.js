@@ -120,7 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
           showNotification(`Welcome back, ${data.user.username}!`, "success");
 
           setTimeout(() => {
-            window.location.href = data.redirect || "/main.html";
+            if (
+              document.referrer &&
+              document.referrer.includes(window.location.host)
+            ) {
+              window.history.back();
+            } else {
+              window.location.href = data.redirect || "/main.html";
+            }
           }, 1500);
         } else if (activeTab === "signup") {
           const email = document.getElementById("signup-email").value;
@@ -159,12 +166,19 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem("user", JSON.stringify(data.user));
 
           showNotification(
-            `Welcome to TFWar, ${data.user.username}!`,
+            `Welcome to GlamAR, ${data.user.username}!`,
             "success"
           );
 
           setTimeout(() => {
-            window.location.href = data.redirect || "/main.html";
+            if (
+              document.referrer &&
+              document.referrer.includes(window.location.host)
+            ) {
+              window.history.back();
+            } else {
+              window.location.href = data.redirect || "/main.html";
+            }
           }, 1500);
         }
       } catch (error) {
@@ -429,8 +443,20 @@ async function register(email, password, username, newsletter) {
     if (!response.ok) throw new Error(data.message || "Registration failed");
 
     localStorage.setItem("token", data.token);
-    showNotification(`Welcome ${data.username}!`, "success");
-    setTimeout(() => (window.location.href = "/dashboard.html"), 1500);
+    localStorage.setItem("user", JSON.stringify(data.user));
+
+    showNotification(`Welcome ${data.user.username}!`, "success");
+
+    setTimeout(() => {
+      if (
+        document.referrer &&
+        document.referrer.includes(window.location.host)
+      ) {
+        window.history.back();
+      } else {
+        window.location.href = data.redirect || "/dashboard.html";
+      }
+    }, 1500);
   } catch (error) {
     showNotification(error.message, "error");
   }
@@ -450,7 +476,16 @@ async function login(emailOrUsername, password) {
 
     localStorage.setItem("token", data.token);
     showNotification(`Welcome back ${data.username}!`, "success");
-    setTimeout(() => (window.location.href = "/dashboard.html"), 1500);
+    setTimeout(() => {
+      if (
+        document.referrer &&
+        document.referrer.includes(window.location.host)
+      ) {
+        window.history.back();
+      } else {
+        window.location.href = "/dashboard.html";
+      }
+    }, 1500);
   } catch (error) {
     showNotification(error.message, "error");
   }

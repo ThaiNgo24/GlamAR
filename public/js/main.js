@@ -1,8 +1,3 @@
-/**
- * GlamAR Website JavaScript
- * Enhanced with animations and interactive features
- */
-
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM loaded, initializing...");
 
@@ -41,21 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   console.log("Initialization complete");
 });
-
-/**
- * Initialize page loader
- */
-// function initLoader() {
-//     const loaderWrapper = document.querySelector('.loader-wrapper');
-
-//     setTimeout(() => {
-//         loaderWrapper.classList.add('loaded');
-
-//         setTimeout(() => {
-//             loaderWrapper.style.display = 'none';
-//         }, 500);
-//     }, 1000);
-// }
 
 /**
  * Initialize mobile menu functionality
@@ -189,123 +169,7 @@ function initThemeToggle() {
     themeToggle.innerHTML =
       '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
   }
-}
-
-/**
- * Initialize dropdown contents
- */
-function initDropdownContents() {
-  // AR Solutions dropdown content
-  const arDropdown = document.querySelector(
-    ".nav-item:nth-child(2) .dropdown-menu"
-  );
-
-  arDropdown.innerHTML = `
-        <div class="dropdown-grid">
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/2838098675.svg" alt="Makeup">
-                </div>
-                <div class="dropdown-content">
-                    <h4>Makeup</h4>
-                    <p>Virtual try-on solutions for makeup products</p>
-                </div>
-            </a>
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/2018733539.svg" alt="Eyewear">
-                </div>
-                <div class="dropdown-content">
-                    <h4>Eyewear</h4>
-                    <p>Virtual try-on solutions for glasses and sunglasses</p>
-                </div>
-            </a>
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/3301625649.svg" alt="Skin Analysis">
-                </div>
-                <div class="dropdown-content">
-                    <h4>AI facial skin analysis</h4>
-                    <p>Real-time feedback on skin issues using live camera mode</p>
-                </div>
-            </a>
-        </div>
-    `;
-
-  // VR Solutions dropdown content
-  const vrDropdown = document.querySelector(
-    ".nav-item:nth-child(3) .dropdown-menu"
-  );
-
-  vrDropdown.innerHTML = `
-        <div class="dropdown-grid">
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/2116589346.svg" alt="Virtual Store">
-                </div>
-                <div class="dropdown-content">
-                    <h4>Virtual store</h4>
-                    <p>Let customers shop anytime, anywhere with immersive virtual stores</p>
-                </div>
-            </a>
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/1743763944.svg" alt="Virtual Space">
-                </div>
-                <div class="dropdown-content">
-                    <h4>Virtual space</h4>
-                    <p>Bring the in-store experience to customers' homes</p>
-                </div>
-            </a>
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/1354271685.svg" alt="Virtual Events">
-                </div>
-                <div class="dropdown-content">
-                    <h4>Virtual events</h4>
-                    <p>Create immersive virtual experiences for product launches and events</p>
-                </div>
-            </a>
-        </div>
-    `;
-
-  // Resources dropdown content
-  const resourcesDropdown = document.querySelector(
-    ".nav-item:nth-child(4) .dropdown-menu"
-  );
-
-  resourcesDropdown.innerHTML = `
-        <div class="dropdown-grid">
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/1443725800.svg" alt="Articles">
-                </div>
-                <div class="dropdown-content">
-                    <h4>Articles</h4>
-                    <p>Deep-dive analysis into immersive tech innovation and industry trends</p>
-                </div>
-            </a>
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/3114313562.svg" alt="Use Cases">
-                </div>
-                <div class="dropdown-content">
-                    <h4>Use cases</h4>
-                    <p>Leading brands achieving growth and success with immersive experiences</p>
-                </div>
-            </a>
-            <a href="#" class="dropdown-item">
-                <div class="dropdown-icon-wrapper">
-                    <img src="https://ext.same-assets.com/60190412/409235749.svg" alt="Guides">
-                </div>
-                <div class="dropdown-content">
-                    <h4>Guides</h4>
-                    <p>Master immersive tech with practical, step-by-step learning resources</p>
-                </div>
-            </a>
-        </div>
-    `;
-}
+} 
 
 /**
  * Initialize video hover effects for solution cards

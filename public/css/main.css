@@ -244,7 +244,6 @@ p {
   transition: all var(--transition-fast);
 }
 
-/* ====== Header ====== */
 .header {
   position: fixed;
   z-index: 100;
@@ -283,68 +282,12 @@ p {
 } */
 
 .logo img {
-  filter: brightness(0) invert(0);
-  height: 40px;
+  height: 35px;
   width: auto;
 }
 
 .dark-theme .logo img {
   filter: brightness(0) invert(1);
-}
-
-.nav-main {
-  display: none;
-}
-
-.nav-list {
-  display: flex;
-  gap: var(--spacing-lg);
-}
-
-.nav-item {
-  position: relative;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  position: relative;
-  font-size: 0.85rem;
-  transition: color var(--transition-normal);
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-pink);
-  transition: width var(--transition-normal);
-}
-
-.nav-link:hover {
-  color: var(--color-pink);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.dropdown-icon {
-  width: 8px;
-  height: 8px;
-  margin-left: var(--spacing-xs);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  transition: transform var(--transition-normal);
-}
-
-.nav-item:hover .dropdown-icon {
-  transform: rotate(180deg);
 }
 
 .header-actions {
@@ -356,7 +299,7 @@ p {
   font-weight: bold;
 }
 
-.mobile-menu-toggle {
+/* .mobile-menu-toggle {
   width: 30px;
   height: 24px;
   position: relative;
@@ -384,7 +327,7 @@ p {
 
 .mobile-menu-toggle.active span:nth-child(3) {
   transform: translateY(-11px) rotate(-45deg);
-}
+} */
 
 /* ====== Hero Section ====== */
 .hero-section {
@@ -1944,37 +1887,3 @@ p {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ====== Loader ====== */
-/* .loader-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.loader-wrapper.loaded {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader {
-    width: 50px;
-    height: 50px;
-    border: 3px solid var(--color-light-gray);
-    border-top: 3px solid var(--color-pink);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-} */

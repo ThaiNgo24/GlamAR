@@ -4,11 +4,11 @@ const path = require("path");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const cartRoutes = require("./public/js/routes/cartRoutes.js");
 
 // Khởi tạo ứng dụng
 const app = express();
 
-// Cấu hình cố định (thay thế .env)
 const config = {
   PORT: 5000,
   MONGODB_URI:
@@ -17,8 +17,9 @@ const config = {
 };
 
 // Middleware
-app.use(cors()); // Cho phép các request từ domain khác
+app.use(cors());
 app.use(express.json());
+app.use("/api/cart", cartRoutes);
 app.use(express.static(path.join(__dirname, "public")));
 
 // Kết nối MongoDB với các tùy chọn mới hơn
@@ -30,7 +31,6 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Cải tiến User Model với validation và timestamp
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -115,7 +115,7 @@ app.post("/api/auth/register", async (req, res) => {
     const user = await User.create({
       username,
       email,
-      password, // Sẽ được hash tự động
+      password,
       newsletterSubscribed,
     });
 
@@ -380,22 +380,48 @@ app.put("/api/users/:userId", authenticateToken, async (req, res) => {
   }
 });
 
-// API gửi liên hệ
+const nodemailer = require("nodemailer");
+
+// Cấu hình transporter Gmail (thêm ở đầu file server.js)
+const gmailTransporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "your-gmail@gmail.com", // Thay bằng Gmail của bạn
+    pass: "your-app-password", // Mật khẩu ứng dụng (không dùng mật khẩu chính)
+  },
+});
+
+// API gửi liên hệ (cập nhật)
 app.post("/api/contact", authenticateToken, async (req, res) => {
   try {
     const { userId, email, subject, message } = req.body;
 
-    // Lưu thông tin liên hệ vào MongoDB
+    // 1. Lưu thông tin liên hệ vào MongoDB
     const contact = new Contact({
       userId,
       email,
       subject,
       message,
     });
-
     await contact.save();
 
-    // Gửi email thực tế có thể thêm ở đây (sử dụng Nodemailer hoặc service khác)
+    // 2. Gửi email thông báo
+    const mailOptions = {
+      from: `"TFWar Support" <your-gmail@gmail.com>`,
+      to: "thaibap2406@gmail.com", // Email nhận
+      subject: `[TFWar Contact] ${subject}`,
+      text: `New contact from ${email}:\n\n${message}`,
+      html: `
+        <h2>New Contact Message</h2>
+        <p><strong>From:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <hr>
+        <p>${message.replace(/\n/g, "<br>")}</p>
+      `,
+    };
+
+    // 3. Thực hiện gửi email
+    await gmailTransporter.sendMail(mailOptions);
 
     res.json({
       success: true,
@@ -403,58 +429,18 @@ app.post("/api/contact", authenticateToken, async (req, res) => {
     });
   } catch (error) {
     console.error("Contact error:", error);
-    res.status(500).json({ success: false, message: "Failed to send message" });
-  }
-});
 
-const nodemailer = require("nodemailer");
-
-// Không cần cấu hình email gửi đi ở đây nữa
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER || "no-reply@tfwar.com", // Email chung của hệ thống
-    pass: process.env.EMAIL_PASS || "your-app-password",
-  },
-});
-
-app.post("/api/send-email", authenticateToken, async (req, res) => {
-  try {
-    const user = await User.findById(req.user.userId);
-    if (!user) {
-      return res
-        .status(404)
-        .json({ success: false, message: "User not found" });
+    // Xử lý lỗi riêng cho phần gửi email
+    if (error.code === "EAUTH") {
+      return res.status(500).json({
+        success: false,
+        message: "Email authentication failed",
+      });
     }
 
-    const { subject, message } = req.body;
-
-    const mailOptions = {
-      // Lấy email người gửi từ MongoDB
-      from: `"${user.username}" <${user.email}>`,
-      to: "thaibap2406@gmail.com", // Email nhận cố định
-      subject: `[TFWar Contact] ${subject}`,
-      text: `From: ${user.email}\n\n${message}`,
-      html: `
-        <h2>New Contact Message from TFWar</h2>
-        <p><strong>User:</strong> ${user.username} (${user.email})</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <hr>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-      `,
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    res.json({
-      success: true,
-      message: "Email sent successfully",
-    });
-  } catch (error) {
-    console.error("Email send error:", error);
     res.status(500).json({
       success: false,
-      message: "Failed to send email",
+      message: "Failed to send message",
       error: error.message,
     });
   }
